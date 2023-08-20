@@ -1,4 +1,5 @@
 package mooc.vandy.java4android.calculator.logic;
+
 import mooc.vandy.java4android.calculator.ui.ActivityInterface;
 
 /**
@@ -21,25 +22,33 @@ public class Logic implements LogicInterface
     }
 
     /**
+     * Define final data members for each operation
+     */
+    private final int ADD = 1;
+    private final int SUBTRACT = 2;
+    private final int MULTIPLY = 3;
+    private final int DIVIDE = 4;
+
+    /**
      * Perform the operation on argumentOne and argumentTwo.
      */
     public void process(int argumentOne, int argumentTwo, int operation)
     {
         switch (operation)
         {
-            case (1):
+            case (ADD):
                 Add addObj = new Add();
                 mOut.print(String.valueOf(addObj.calculate(argumentOne, argumentTwo)));
                 break;
-            case (2):
+            case (SUBTRACT):
                 Subtract subObj = new Subtract();
                 mOut.print(String.valueOf(subObj.calculate(argumentOne, argumentTwo)));
                 break;
-            case (3):
+            case (MULTIPLY):
                 Multiply mulObj = new Multiply();
                 mOut.print(String.valueOf(mulObj.calculate(argumentOne, argumentTwo)));
                 break;
-            case (4):
+            case (DIVIDE):
                 Divide divObj = new Divide();
                 // Catch exception that comes from dividing by zero
                 try
@@ -50,7 +59,8 @@ public class Logic implements LogicInterface
                     mOut.print("Dividing by zero is not possible.");
                 }
                 break;
-
+            default:
+                mOut.print("Error - Bad operation code!!");
         }
     }
 }
